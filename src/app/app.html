@@ -1,0 +1,34 @@
+<h1>BMI Calculator</h1>
+
+<main class="wrapper">
+  <section class="card">
+    <h2>Your details</h2>
+
+    <label>
+      Weight (kg)
+      <input type="number" [ngModel]="weight()" (ngModelChange)="weight.set($event)" />
+    </label>
+
+    <label>
+      Height (cm)
+      <input type="number" [ngModel]="height()" (ngModelChange)="height.set($event)" />
+    </label>
+  </section>
+
+  <section class="card">
+    <h2>Result</h2>
+
+    <button (click)="calculate()">Calculate BMI</button>
+
+    @if (error()) {
+      <p class="error">{{ error() }}</p>
+    }
+
+    @if (bmi() !== null) {
+      <p class="result">
+        Your BMI: <strong>{{ bmi() }}</strong><br />
+        <span>{{ category() }}</span>
+      </p>
+    }
+  </section>
+</main>
